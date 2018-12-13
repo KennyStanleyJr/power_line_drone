@@ -1,0 +1,11 @@
+<launch>
+  <include file="$(find mavros)/launch/px4.launch"/>
+
+  <include file="$(find rplidar_ros)/launch/rplidar.launch" />
+
+  <node type="CVA_picamera_node.py"    name="CVA_picamera_node"   pkg="offboard_python" />
+
+  <node type="drone_control.py" name="drone_control"    pkg="offboard_python" output="screen" launch-prefix="xterm -e"/>
+
+  <node type="input_node.py"    name="input_node"   pkg="offboard_python"   output="screen" launch-prefix="xterm -e" />
+</launch>
